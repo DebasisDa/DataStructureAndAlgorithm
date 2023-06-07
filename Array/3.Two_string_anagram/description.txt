@@ -1,0 +1,4 @@
+Anagrams: Given two Strings, check if they are anagrams.
+
+example :  cata = acta
+           cata != actt
