@@ -136,13 +136,18 @@ class NodeLink {
 
 let obj = new NodeLink();
 obj.insertLast(10);
-obj.insertLast(20);
+obj.insertLast(10);
+obj.insertLast(30);
 obj.insertLast(30);
 obj.insertLast(40);
-obj.insertFirst(400);
-obj.insert(300, 4);
-
-obj.removeLast();
+obj.insertLast(40);
+obj.insertLast(50);
+obj.insertLast(60);
+// obj.insertFirst(400);
+// obj.insert(300, 4);
 obj.dispaly();
+// obj.removeLast();
+obj.deleteDuplicates(this.head);
+//obj.dispaly();
 
 
