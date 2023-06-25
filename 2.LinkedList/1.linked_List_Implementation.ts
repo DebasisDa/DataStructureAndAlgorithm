@@ -131,15 +131,45 @@ class NodeLink {
       list = list.next;
     }
   }
+
+
+ removeNthFromEnd(n: number) {
+    let fast = this.head
+         let slow = this.head
+         console.log("===============startr=======================>>>>>");
+         console.log(slow.data);
+  
+         for(let i=0;i<n;i++){
+             fast = fast.next;
+             console.log("==============fast1========================>>>>>");
+             console.log(fast.data +" i = "+i+" n = "+n);
+             console.log("==============fast1========================>>>>>");
+         }
+  
+         if(!fast)
+             return this.head.next
+  
+         while(fast.next){
+             fast = fast.next
+             slow = slow.next
+             console.log("================fast2======================>>>>>");
+             console.log(fast.data);
+             console.log("==================fast2====================>>>>>");
+             console.log("=================slow=====================>>>>>");
+             console.log(slow.data);
+             console.log("===================slow===================>>>>>");
+         }
+  
+         slow.next = slow.next.next
+         return this.head
+ };
 }
 
 
 let obj = new NodeLink();
 obj.insertLast(10);
-obj.insertLast(10);
+obj.insertLast(20);
 obj.insertLast(30);
-obj.insertLast(30);
-obj.insertLast(40);
 obj.insertLast(40);
 obj.insertLast(50);
 obj.insertLast(60);
@@ -147,7 +177,9 @@ obj.insertLast(60);
 // obj.insert(300, 4);
 obj.dispaly();
 // obj.removeLast();
-obj.deleteDuplicates(this.head);
 //obj.dispaly();
+obj.removeNthFromEnd(2);
+console.log("==============================>");
+obj.dispaly();
 
 
