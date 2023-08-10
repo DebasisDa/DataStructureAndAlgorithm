@@ -11,40 +11,45 @@ class Graph {
     edges;
     constructor (){
         this.nodes = [];
-        this.edges = [];
+        this.edges = new Map();
     }
 
     addNode(name){
         const node = new GraphNode(name);
         this.nodes.push(node);
-        this.edges[name] = [];
+        this.edges.set(node, []);
     }
 
     addEdge(FromNode, ToNode){
-       this.edges[FromNode].push(ToNode);
-       this.edges[ToNode].push(FromNode);
+        let node1 = this.nodes.find((node)=>node.name == FromNode);
+        let node2 = this.nodes.find((node)=>node.name == ToNode);
+        this.edges.get(node1).push(node2);
+        this.edges.get(node2).push(node1);
     }
 
-    dfs(start = this.nodes[0].name, map={}){
-        console.log(start);
-       map[start] = true;
-       for(let node of this.edges[start]){
-        if(map[node] == true) continue; 
+    dfs(start = this.nodes[0], map={}){
+        console.log(start.name);
+        map[start.name] = true;
+       for(let node of this.edges.get(start)){
+        if(map[node.name] == true) continue; 
         else {
+            map[node.name] = true;
             this.dfs(node, map);
         }
        }
     }
 
-    bfs(start = this.nodes[0].name, map={}){
+
+    bfs(start = this.nodes[0], map={}){
         let queue = [start];
+        map[start.name] = true;
         while(queue.length != 0){
             const node = queue.shift();
-            console.log(node);
-            for(let value of this.edges[node]){
-                if(map[value]) continue;
-                queue.push(value);
-                map[value] = true;
+            console.log(node.name);
+            for(let valu of this.edges.get(node)){
+                if(map[valu.name] == true) continue;
+                queue.push(valu);
+                map[valu.name] = true;
             }
         }
     }
